@@ -5,8 +5,12 @@ class GameObject;
 
 #include "../SDL/src/include/SDL2/SDL.h"
 #include "../SDL/src/include/SDL2/SDL_image.h"
+#include "../SDL/src/include/SDL2/SDL_ttf.h"
 #include "Node.hpp"
 #include <string>
+#include "Text.hpp"
+
+
 
 class Game{
     public :
@@ -19,7 +23,8 @@ class Game{
         void GenerateObject();
         static SDL_Renderer *renderer;
         bool Runing() const { return isRunning; };
-        void RenderNodeList(NodeList<GameObject> list); 
+        void RenderNodeList(NodeList<GameObject> &list);
+        void Restart();
 
     private:
         int cnt = 0;

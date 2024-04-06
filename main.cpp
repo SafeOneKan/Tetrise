@@ -13,8 +13,8 @@ int main(int argc, char *argv[]) {
     
 
 
-            int width = 768,
-                height = 1024;
+            int width = 1536,
+                height =768 ;
     Game *game = new Game("game",width,height);
 
    
@@ -23,9 +23,11 @@ int main(int argc, char *argv[]) {
     const int FPS = 60;
     const int framedelay = 1000 / FPS;
     Uint64 framestart, frametime;
+    srand(time(NULL));
     while(game->Runing()){
 
         framestart = SDL_GetTicks64() * 0.001;
+        
         game->handleEvents();
         game->update();
         

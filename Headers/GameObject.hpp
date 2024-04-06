@@ -7,29 +7,9 @@ class Game;
 #include "Node.hpp"
 #include <iostream>
 #include <string>
+#include "Colr.hpp"
 
-
-
-class Colr {
-    public:
-    Colr(int r, int g, int b) : r(r), g(g), b(b){};
-    bool operator==(const Colr& other) const {
-        return r == other.r && g == other.g && b == other.b;
-    };
-    bool operator<(const Colr& other) const {
-        if (r != other.r) return r < other.r;
-        if (g != other.g) return g < other.g;
-        return b < other.b;
-    };
-    int r, g, b;
-};
-
-const Colr Red(255, 0, 0);
-const Colr Green(0, 255, 0);
-const Colr Blue(0, 0, 255);
-const Colr Yellow(255, 255, 0);
-const Colr White(255, 255, 255);
-const Colr Black(0,0,0 );
+#include "Game.hpp"
 
 class GameObject {
     public :
@@ -39,11 +19,18 @@ class GameObject {
         void update();
         void render();
         void SetColor(Colr);
-       
-    
+        void SetShape(Shape);
+        void SetTexture(SDL_Texture *);
+        bool checkColorMatch(const GameObject &obj1,const GameObject &obj2);
+        bool checkShapeMatch(const GameObject &obj1,const GameObject &obj2);
+        Colr GetColor() { return Color; };
+        Shape GetShape() { return shape; };
+        SDL_Texture *GetTexture() { return objtexture; };
     private :
         int xpos, ypos;
         SDL_Texture *objtexture;
         SDL_Rect srcRect, destRect;
+        Colr Color;
         SDL_Color texcolor;
+        Shape shape;
 };

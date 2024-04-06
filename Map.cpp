@@ -43,7 +43,7 @@ void Map::DrawMap(){
                 case 1:
                     TextureManager::Draw(metal, dst);
                     break;
-                // case 2:
+                // case 0:
                 //     TextureManager::Draw(water, dst);
                 //     break;
                 default:
